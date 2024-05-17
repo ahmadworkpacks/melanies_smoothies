@@ -20,7 +20,7 @@ if ingredientes_list:
     ingredients_string=' '
     for fruit in ingredientes_list:
         ingredients_string +=fruit + '  '
-        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit)
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit)
         fv_df=st.dataframe(data=fruityvice_response.json(),use_container_width=True)
         
     time_to_insert=st.button('Submit Order')
