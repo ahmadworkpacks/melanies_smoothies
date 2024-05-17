@@ -20,12 +20,13 @@ pd_df=my_dataframe.to_pandas()
 #st.dataframe(data=pd_df, use_container_width=True)
 #st.stop()
 ingredientes_list=st.multiselect('Choose up to 5 ingredients',my_dataframe,max_selections=5)
-search_on=pd_df.loc[pd_df['fruit_name'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
-st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
+
 if ingredientes_list:
     ingredients_string=' '
     for fruit in ingredientes_list:
         ingredients_string +=fruit + '  '
+        search_on=pd_df.loc[pd_df['fruit_name'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
+        st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit)
         fv_df=st.dataframe(data=fruityvice_response.json(),use_container_width=True)
         
